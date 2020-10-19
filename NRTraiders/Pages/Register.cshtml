@@ -1,12 +1,67 @@
 ﻿@page
 @model NRTraiders.Pages.RegisterModel
-<div class="form-group ml-4 mr-4">
+<div class="border container" style="padding : 30px;">
     <form method="post">
-        <input class="form-control mt-2" name="Name" placeholder="@Html.DisplayNameFor(u => u.AppUser.Name)" />
-        <input class="form-control mt-2" name="UserName"   placeholder="@Html.DisplayNameFor(u => u.AppUser.UserName)" />
-        <input class="form-control mt-2" name="Email"  placeholder="Email Address" />
-        <input class="form-control mt-2" name="Password"  placeholder="Password" />
-        <input class="form-control mt-2" name="Password"  placeholder="Confirm Password" />
-        <input class="form-control mt-2  btn btn-success" type="submit" />
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="AppUser.Name"></label>
+            </div>
+            <div class="col-6">
+                <input class="form-control"  asp-for="AppUser.Name" />
+
+            </div>
+            <span asp-validation-for="AppUser.Name"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="AppUser.UserName"></label>
+            </div>
+            <div class="col-6">
+                <input class="form-control" asp-for="AppUser.UserName" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="AppUser.Email"></label>
+            </div>
+            <div class="col-6">
+                <input class="form-control" asp-for="AppUser.Email" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="AppUser.Password"></label>
+            </div>
+            <div class="col-6">
+                <input class="form-control" asp-for="AppUser.Password" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label>Confirm Password</label>
+            </div>
+            <div class="col-6">
+                <input class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3 offset-4">
+                <input type="submit" value="Create" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <button class="btn btn-success form-control">Back to Login</button>
+            </div>
+        </div>
+
+        @*<input class="form-control mt-2" name="UserName" placeholder="@Html.DisplayNameFor(u => u.AppUser.UserName)" />
+        <input class="form-control mt-2" name="Email" placeholder="Email Address" />
+        <input class="form-control mt-2" name="Password" placeholder="Password" />
+        <input class="form-control mt-2" name="Password" placeholder="Confirm Password" />
+        <input class="form-control mt-2  btn btn-success" type="submit" />*@
     </form>
 </div>
+@section Scripts{ 
+ <partial name="_ValidationScriptsPartial" />
+
+}

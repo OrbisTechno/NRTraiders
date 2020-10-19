@@ -11,8 +11,8 @@ namespace NRTraiders.Models
         [Key]
         public int Id { get; set; }
 
-        [Display( Name = "Full Name" )]
-     
+        
+        [Required]
         public string Name { get; set; }
 
         public string UserName { get; set; }
@@ -22,6 +22,6 @@ namespace NRTraiders.Models
         
         public string Email { get; set; }
 
-        public bool IsAdmin { get; set; }
+        //public bool IsAdmin { get; set; }
     }
 }

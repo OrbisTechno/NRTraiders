@@ -16,10 +16,19 @@ namespace NRTraiders.Pages
         {
         }
 
-        public void OnPost()
+        public async Task<IActionResult> OnPost()
         {
 
-            var appUer = AppUser;
+            // var appUer = AppUser;
+
+            if (ModelState.IsValid == true)
+            {
+                return RedirectToPage("Privacy");
+            }
+            else
+            {
+                return Page();
+            }
         }
 
     }
