@@ -1,0 +1,12 @@
+﻿@page
+@model NRTraiders.Pages.RegisterModel
+<div class="form-group ml-4 mr-4">
+    <form method="post">
+        <input class="form-control mt-2" name="Name" placeholder="@Html.DisplayNameFor(u => u.AppUser.Name)" />
+        <input class="form-control mt-2" name="UserName"   placeholder="@Html.DisplayNameFor(u => u.AppUser.UserName)" />
+        <input class="form-control mt-2" name="Email"  placeholder="Email Address" />
+        <input class="form-control mt-2" name="Password"  placeholder="Password" />
+        <input class="form-control mt-2" name="Password"  placeholder="Confirm Password" />
+        <input class="form-control mt-2  btn btn-success" type="submit" />
+    </form>
+</div>
