@@ -1,0 +1,19 @@
+﻿@model List<NRTraiders.Models.Product>
+<h1>List of Animals</h1>
+
+
+    <table class="table table-striped">
+        <tr>
+            <th><label asp-for="@Model.FirstOrDefault().Name"></label></th>
+            <th colspan="2"></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td><a asp-page="EditProduct" class="btn btn-primary" asp-route-id="@item.Id">Edit</a></td>
+            </tr>
+
+        }
+    </table>
+

@@ -15,5 +15,7 @@ namespace NRTraiders.Data
         }
 
         public DbSet<AppUser> AppUser { get; set; }
+
+        public DbSet<Product> Product { get; set; }
     }
 }
