@@ -1,0 +1,35 @@
+﻿@page "{handler?}"
+@model NRTraiders.Pages.ProductsListModel
+
+@{
+
+    var localProducts = Model.Products;
+}
+
+<div class="container ">
+    <table class="table table-striped border">
+        <tr>
+            <th><label asp-for="@Model.Products.FirstOrDefault().Name"></label></th>
+            <th><label asp-for="@Model.Products.FirstOrDefault().Description"></label></th>
+            <th><label asp-for="@Model.Products.FirstOrDefault().ImageUrl"></label></th>
+            <th colspan="2"></th>
+        </tr>
+        @foreach (var item in localProducts)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.ImageUrl</td>
+                <td><a asp-page="EditProduct" class="btn btn-primary" asp-route-id="@item.Id">Edit</a></td>
+                <td>
+                    <form asp-page-handler="delete" asp-route-id="@item.Id" method="post">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+
+            </tr>
+
+        }
+    </table>
+</div>
+        

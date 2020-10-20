@@ -1,0 +1,47 @@
+﻿@page
+
+@model NRTraiders.Pages.EditProductModel
+@{
+}
+<h1>Edit Product</h1>
+<form method="post">
+    <input type="hidden" asp-for="Product.Id" />
+    <div class="border container" style="padding : 30px;">
+        <div class="form-group row">
+            <div class="col-4">
+
+                <label asp-for="Product.Name"></label>
+            </div>
+            <div class="col-6">
+                <input class="form-control" asp-for="Product.Name" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+
+                <label asp-for="Product.Description"></label>
+            </div>
+            <div class="col-6">
+                <input class="form-control" asp-for="Product.Description" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+
+                <label asp-for="Product.ImageUrl"></label>
+            </div>
+            <div class="col-6">
+                <input class="form-control" asp-for="Product.ImageUrl" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-4">
+                <input type="submit" value="Update Product" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="ProductsList" class="btn btn-success form-control">Back to Products List</a>
+                @*<button type="button" asp-page="ProductsList" class="btn btn-success form-control">Back to Products List</button>*@
+            </div>
+        </div>
+</form>
+</div>

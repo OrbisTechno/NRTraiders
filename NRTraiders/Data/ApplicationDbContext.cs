@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using NRTraiders.Models;
 
 namespace NRTraiders.Data
 {
@@ -12,5 +13,9 @@ namespace NRTraiders.Data
             : base(options)
         {
         }
+
+        public DbSet<AppUser> AppUser { get; set; }
+
+        public DbSet<Product> Product { get; set; }
     }
 }
