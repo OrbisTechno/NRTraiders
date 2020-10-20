@@ -14,7 +14,9 @@ namespace NRTraiders.Pages
     public class ProductsListModel : PageModel
     {
         public List<Product> Products = new List<Product>();
-        
+
+        [BindProperty]
+        public Product Product { get; set; }
 
         private readonly ApplicationDbContext _db;
         public ProductsListModel(ApplicationDbContext db)
@@ -28,11 +30,13 @@ namespace NRTraiders.Pages
             Products = await _db.Product.ToListAsync();
         }
 
-        public async Task<IActionResult> OnGetDelete(int id)
+
+
+        public async Task<IActionResult> OnPostDelete(int id)
         {
             var productFromDb = await _db.Product.FindAsync(id);
 
-             _db.Product.Remove(productFromDb);
+            _db.Product.Remove(productFromDb);
             await _db.SaveChangesAsync();
 
             return Page();

@@ -20,16 +20,28 @@
                         <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
+                        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
                         <div class="dropdown-menu">
+                            <a class="dropdown-item" asp-page="ProductsList">Products List</a>
                             <a class="dropdown-item" asp-page="AddProduct">Add Product</a>
                         </div>
+
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Spare Parts</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Spare Parts</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" asp-page="SparePartsList">Spare Parts List</a>
+                            <a class="dropdown-item" asp-page="AddSparePart">Add Spare Part</a>
+                        </div>
+
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Services</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" asp-page="ServicesList">Services List</a>
+                            <a class="dropdown-item" asp-page="AddService">Add Service</a>
+                        </div>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#">About Us</a>
@@ -38,7 +50,7 @@
                         <a class="nav-link text-white" href="#">Contact Us</a>
                     </li>
 
-                    
+
                 </ul>
                 <div class="mr-3 ml-3">
                     <ul class="navbar-nav">
