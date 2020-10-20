@@ -23,6 +23,9 @@ a {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+#nav{
+    width:100%;
+}
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -68,4 +71,14 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+
+
+/*styles of cards*/
+#card {
+    width: 90%
+}
+#popup-img{
+    border:2px solid;
 }
