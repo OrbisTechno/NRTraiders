@@ -1,97 +1,83 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-
-    <link rel="stylesheet" href="~/css/site.css">
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - NRTraiders</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body style="overflow:hidden">
-    
-        <header>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">NRTraiders</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" asp-page="ProductsList">Products List</a>
+                            <a class="dropdown-item" asp-page="AddProduct">Add Product</a>
+                        </div>
 
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="nav">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">NRTraiders</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Spare Parts</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" asp-page="SparePartsList">Spare Parts List</a>
+                            <a class="dropdown-item" asp-page="AddSparePart">Add Spare Part</a>
+                        </div>
 
-                <div class="collapse navbar-collapse" id="navbarColor01">
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" asp-page="ServicesList">Services List</a>
+                            <a class="dropdown-item" asp-page="AddService">Add Service</a>
+                        </div>
 
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link text-white" asp-area="" asp-page="/Index">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Contact Us</a>
+                    </li>
+
+
+                </ul>
+                <div class="mr-3 ml-3">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Register">Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Spare Parts</a>
+                            <a class="nav-link" asp-page="/Login">Login</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Contact Us</a>
-                        </li>
-
                     </ul>
-                    @*<form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                    </form>*@
-                    <div class="mr-3 ml-3">
-                        <partial name="_LoginPartial" />
-                    </div>
                 </div>
-            </nav>
+            </div>
+        </nav>
+    </header>
+    <div class="p-2 pt-0">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top footer text-muted text-center">
 
-            @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-page="/Index">NRTraiders</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <partial name="_LoginPartial" />
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>*@
-        </header>
-        <div class="p-2 pt-0">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
+        &copy; 2020 - NRTraiders - <a asp-area="" asp-page="/Privacy">Privacy</a>
 
-
-        <footer class="border-top footer text-muted text-center">
-            
-                &copy; 2020 - NRTraiders - <a asp-area="" asp-page="/Privacy">Privacy</a>
-           
-        </footer>
-    
+    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>
