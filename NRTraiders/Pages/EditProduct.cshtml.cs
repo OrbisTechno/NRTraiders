@@ -18,6 +18,8 @@ namespace NRTraiders.Pages
         [BindProperty]
         public Product Product { get; set; }
 
+        public List<Product> Products { get; set; }
+
         public EditProductModel(ApplicationDbContext db)
         {
             _db = db;
@@ -27,6 +29,9 @@ namespace NRTraiders.Pages
         {
             Product = new Product();
             Product = await _db.Product.FirstOrDefaultAsync(x => x.Id == id);
+
+            Products = new List<Product>();
+            Products = await _db.Product.ToListAsync<Product>();
         }
 
         public async Task<IActionResult> OnPost()
@@ -39,7 +44,10 @@ namespace NRTraiders.Pages
 
             await _db.SaveChangesAsync();
 
-            return RedirectToPage("ProductsList");
+            Products = new List<Product>();
+            Products = await _db.Product.ToListAsync<Product>();
+
+            return Page();
         }
 
     }
