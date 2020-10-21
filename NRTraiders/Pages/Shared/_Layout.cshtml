@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
             <a class="navbar-brand" asp-area="" asp-page="/Index">NRTraiders</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -19,35 +19,24 @@
                     <li class="nav-item active">
                         <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" asp-page="ProductsList">Products List</a>
-                            <a class="dropdown-item" asp-page="AddProduct">Add Product</a>
-                        </div>
-
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" id="ProductsMenu" href="#Products">Products</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Spare Parts</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" asp-page="SparePartsList">Spare Parts List</a>
-                            <a class="dropdown-item" asp-page="AddSparePart">Add Spare Part</a>
-                        </div>
-
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" id="SparePartsMenu" href="#SpareParts">Spare Parts</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" asp-page="ServicesList">Services List</a>
-                            <a class="dropdown-item" asp-page="AddService">Add Service</a>
-                        </div>
-
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" id="ServicesMenu" href="#Services">Services</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" asp-page="AddItem">Add Product</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link text-white" id="AboutUsMenu" href="#AboutUs">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Contact Us</a>
+                        <a class="nav-link text-white" id="ContactUsMenu" href="#ContactUs">Contact Us</a>
                     </li>
 
 
@@ -65,7 +54,7 @@
             </div>
         </nav>
     </header>
-    <div class="p-2 pt-0">
+    <div class="p-5" style="margin-top:45px;">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -78,6 +67,44 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @RenderSection("Scripts", required: false)
+    <script>
+        $("#ProductsMenu").click(function () {
+            $('html, body').animate({
+                scrollTop: $("#Products").offset().top - 77
+            }, 1000);
+            return false;
+        });
+
+        $("#SparePartsMenu").click(function () {
+            $('html, body').animate({
+                scrollTop: $("#SpareParts").offset().top - 77
+            }, 1000);
+            return false;
+        });
+
+        $("#ServicesMenu").click(function () {
+            $(' html,body').animate({
+                scrollTop: $("#Services").offset().top - 77
+            }, 1000);
+            return false;
+        });
+
+        $("#AboutUsMenu").click(function () {
+            $(' html,body').animate({
+                scrollTop: $("#AboutUs").offset().top - 77
+            }, 1000);
+            return false;
+        });
+
+        $("#ContactUsMenu").click(function () {
+            $(' html,body').animate({
+                scrollTop: $("#ContactUs").offset().top - 77
+            }, 1000);
+            return false;
+        });
+
+    </script>
 </body>
 </html>

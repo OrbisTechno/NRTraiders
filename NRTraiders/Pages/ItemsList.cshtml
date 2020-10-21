@@ -1,0 +1,29 @@
+﻿@page
+@model NRTraiders.Pages.ItemsListModel
+
+@{
+
+    var localItems = Model.Items;
+}
+
+
+<div class="container ">
+
+    <table class="table table-striped border">
+        <tr>
+            <th><label asp-for="@Model.Items.FirstOrDefault().Name"></label></th>
+            <th><label asp-for="@Model.Items.FirstOrDefault().Description"></label></th>
+            <th><label asp-for="@Model.Items.FirstOrDefault().ImageUrl"></label></th>
+
+        </tr>
+        @foreach (var item in localItems)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.ImageUrl</td>
+            </tr>
+
+        }
+    </table>
+</div>
