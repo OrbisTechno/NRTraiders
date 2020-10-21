@@ -46,13 +46,25 @@ namespace NRTraiders.Pages
             {
                 await _db.AddAsync(Product);
                 await _db.SaveChangesAsync();
-
-                return RedirectToPage("AddProduct");
+                Products = await _db.Product.ToListAsync();
+                return Page();
             }
             else
             {
                 return Page();
             }
+        }
+
+        
+        public async Task<IActionResult> OnPostDelete(int id)
+        {
+            var productFromDb = await _db.Product.FindAsync(id);
+
+            _db.Product.Remove(productFromDb);
+            await _db.SaveChangesAsync();
+
+            Products = await _db.Product.ToListAsync();
+            return RedirectToPage("AddProduct");
         }
 
 

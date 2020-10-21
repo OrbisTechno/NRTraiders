@@ -18,6 +18,8 @@ namespace NRTraiders.Pages
         [BindProperty]
         public Product Product { get; set; }
 
+        
+
         private readonly ApplicationDbContext _db;
         public ProductsListModel(ApplicationDbContext db)
         {
@@ -39,6 +41,7 @@ namespace NRTraiders.Pages
             _db.Product.Remove(productFromDb);
             await _db.SaveChangesAsync();
 
+            Products = await _db.Product.ToListAsync();
             return Page();
         }
     }
