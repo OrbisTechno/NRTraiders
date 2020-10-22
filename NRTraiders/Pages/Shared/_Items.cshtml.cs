@@ -5,16 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NRTraiders.Data;
-using NRTraiders.Models;
 
 namespace NRTraiders.Pages.Shared
 {
-    public class _ProductsModel : PageModel
+    public class _ItemsModel : PageModel
     {
-
         private readonly ApplicationDbContext _db;
 
-        public _ProductsModel(ApplicationDbContext db)
+        public _ItemsModel(ApplicationDbContext db)
         {
             _db = db;
         }
@@ -27,9 +25,9 @@ namespace NRTraiders.Pages.Shared
 
         public async Task<IActionResult> OnPostDelete(int id)
         {
-            var productFromDb = await _db.Product.FindAsync(id);
+            var ItemFromDb = await _db.Item.FindAsync(id);
 
-            _db.Product.Remove(productFromDb);
+            _db.Item.Remove(ItemFromDb);
             await _db.SaveChangesAsync();
 
             return Page();

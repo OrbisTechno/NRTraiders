@@ -25,29 +25,63 @@ namespace NRTraiders.Pages
             _db = db;
         }
 
-        public async Task OnGet(int id)
+        public async Task OnGet()
         {
-            Product = new Product();
-            Product = await _db.Product.FirstOrDefaultAsync(x => x.Id == id);
-
             Products = new List<Product>();
             Products = await _db.Product.ToListAsync<Product>();
         }
 
-        public async Task<IActionResult> OnPost()
+
+        public async Task<IActionResult> OnPostEdit(int id)
         {
-            var ProductFromDb = await _db.Product.FindAsync(Product.Id);
 
-            ProductFromDb.Name = Product.Name;
-            ProductFromDb.Description = Product.Description;
-            ProductFromDb.ImageUrl = Product.ImageUrl;
+            if(ModelState.IsValid)
+            {
+              var ProductFromDb =  await _db.Product.FindAsync(id);
+                ProductFromDb.Name = Product.Name;
+                ProductFromDb.Description = Product.Description;
+                ProductFromDb.ImageUrl = Product.ImageUrl;
 
-            await _db.SaveChangesAsync();
+                await _db.SaveChangesAsync();
+            }
+
+            Product = await _db.Product.FindAsync(id);
+
+            
 
             Products = new List<Product>();
             Products = await _db.Product.ToListAsync<Product>();
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPost()
+        {
+            if (ModelState.IsValid)
+            {
+                var ProductFromDb = await _db.Product.FindAsync(Product.Id);
+
+                ProductFromDb.Name = Product.Name;
+                ProductFromDb.Description = Product.Description;
+                ProductFromDb.ImageUrl = Product.ImageUrl;
+
+                await _db.SaveChangesAsync();
+
+                Products = new List<Product>();
+                Products = await _db.Product.ToListAsync<Product>();
+            }
 
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostDelete(int id)
+        {
+            var productFromDb = await _db.Product.FindAsync(id);
+
+            _db.Product.Remove(productFromDb);
+            await _db.SaveChangesAsync();
+
+            Products = await _db.Product.ToListAsync();
+            return RedirectToPage("EditProduct");
         }
 
     }

@@ -11,7 +11,16 @@
         {
             <tr>
                 <td>@item.Name</td>
-                <td><a asp-page="EditProduct" class="btn btn-primary" asp-route-id="@item.Id">Edit</a></td>
+                <td>
+                    <form asp-page="EditProduct" asp-page-handler="edit" class="edit" asp-route-id="@item.Id" method="post">
+                        <button class="btn btn-primary">Edit</button>
+                        </form>
+                </td>
+                <td>
+                    <form asp-page-handler="delete" asp-route-id="@item.Id" method="post">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
             </tr>
 
         }

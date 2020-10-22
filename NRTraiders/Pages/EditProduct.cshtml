@@ -3,10 +3,10 @@
 @model NRTraiders.Pages.EditProductModel
 @{
 }
+<div class="border container" style="padding : 30px;">
+    <form method="post">
+        <input type="hidden" asp-for="Product.Id" />
 
-<form method="post">
-    <input type="hidden" asp-for="Product.Id" />
-    <div class="border container" style="padding : 30px;">
         <div class="form-group row">
             <div class="col-4">
 
@@ -43,7 +43,9 @@
                 @*<button type="button" asp-page="ProductsList" class="btn btn-success form-control">Back to Products List</button>*@
             </div>
         </div>
-        <partial name="_Products" model="@Model.Products" />
-    </div>
-</form>
+
+
+    </form>
+    @*<partial name="_Products" model="@Model.Products" />*@
+</div>
 

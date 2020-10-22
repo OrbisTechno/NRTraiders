@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,37 +10,35 @@ using NRTraiders.Models;
 
 namespace NRTraiders.Pages
 {
-    public class ProductsListModel : PageModel
+    public class ItemsListModel : PageModel
     {
-        public List<Product> Products = new List<Product>();
+        public List<Item> Items = new List<Item>();
 
         [BindProperty]
-        public Product Product { get; set; }
+        public Item Item { get; set; }
 
-        
+
 
         private readonly ApplicationDbContext _db;
-        public ProductsListModel(ApplicationDbContext db)
+        public ItemsListModel(ApplicationDbContext db)
         {
             _db = db;
         }
 
 
-        public async Task OnGet()
+        public async Task OnGet(int id)
         {
-            Products = await _db.Product.ToListAsync();
+            Items = await _db.Item.Where(x => x.ItemTypeId == id).ToListAsync();
         }
-
-
 
         public async Task<IActionResult> OnPostDelete(int id)
         {
-            var productFromDb = await _db.Product.FindAsync(id);
+            var ItemFromDb = await _db.Item.FindAsync(id);
 
-            _db.Product.Remove(productFromDb);
+            _db.Item.Remove(ItemFromDb);
             await _db.SaveChangesAsync();
 
-            Products = await _db.Product.ToListAsync();
+            Items = await _db.Item.ToListAsync();
             return Page();
         }
     }
